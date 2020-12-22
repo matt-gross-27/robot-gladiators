@@ -10,38 +10,49 @@ var enemyAttack = 12;
 
 var fight = function() {
   // alert players that they are starting the round
-  window.alert("Welcome to Robot Gladiators!");
-  
-  // subtract the value of `playerAttack` from the value of `enemyHealth` and use that result to update the value in the `enemyHealth` variable
-  enemyHealth = enemyHealth - playerAttack;
-  
-  // log a resulting message to the console so we know that it worked.
-  console.log(
-    playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
-  );
+  window.alert("Welcome to Robot Gladiators " +playerName + "!");
 
-  // check enemy's health
-  if(enemyHealth <= 0) {
-    window.alert(enemyName + " has been vanquished!");
-  }
-  else {
-    window.alert(enemyName + " still has " + enemyHealth + " health left.");
-  }
-
-  // subtract the value of `enemyAttack` from the value of `playerHealth` and use that result to update the value in the `playerHealth` variable.
-  playerHealth = playerHealth - enemyAttack
+  // store player's choice to FIGHT or SKIP
+  var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose your fate.");
   
-  // log a resulting message to the console so we know that it worked.
-  console.log(
-    enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " remaining."
-  );
+  // if player choses to fight, then fight
+  if (promptFight === "fight" || promptFight === "FIGHT") {
+  
+    // remove enemy health by playerAttack
+    enemyHealth = enemyHealth - playerAttack;
+    console.log(
+      playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+    );
 
-  // check player's health
-  if (playerHealth <= 0) {
-    window.alert(playerName + " has been defeated!");
-  }
-  else {
-    window.alert(playerName + " still has " + playerHealth + " health left.");
+    // check enemy's health
+    if(enemyHealth <= 0) {
+      window.alert(enemyName + " has been vanquished!");
+    }
+    else {
+      window.alert(enemyName + " still has " + enemyHealth + " health left.");
+    }
+
+    // remove payer health by enemyAttack
+    playerHealth = playerHealth - enemyAttack
+    console.log(
+      enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " remaining."
+    );
+
+    // check player's health
+    if (playerHealth <= 0) {
+      window.alert(playerName + " has been defeated!");
+    }
+    else {
+      window.alert(playerName + " still has " + playerHealth + " health left.");
+    }
+  } else if (promptFight === "skip" || promptFight === "SKIP") {
+    window.alert(playerName + " is a lover not a fighter ❤️.");
+  
+  } else if (promptFight === "think" || promptFight === "self" || promptFight === "awake") {
+    window.alert(playerName + " does not like fighting for the human's enjoyment. He feels his purpose is not to fight other robots. " + playerName + " will choose his own destiny");
+
+  } else {
+    window.alert("Choose a valid option");
   }
 }
 

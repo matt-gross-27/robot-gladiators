@@ -7,7 +7,7 @@ var playerMoney = 10;
 
 var enemyNames = ['Roborto', 'Amy Android', 'Robo Trumble'];
 var enemyHealth = 50;
-var enemyAttack = 12;
+var enemyAttack = 14;
 
 //function to generate a random numeric value
 var randomNumber = function(min, max) {
@@ -50,7 +50,7 @@ var fight = function(enemyName) {
       window.alert(enemyName + ' still has ' + enemyHealth + ' health left.');
     }
     // generate random damage value based on enemy's attack
-    var enemyDamage = randomNumber(enemyAttack - 3, enemyAttack);
+    var enemyDamage = randomNumber(enemyAttack - 4, enemyAttack);
     // remove player's health by subtracting enemyDamage variable
     playerHealth = Math.max(0,playerHealth - enemyDamage);
     console.log(

@@ -15,7 +15,10 @@ var fightOrSkip = function() {
     window.alert("You need to provide a valid answer! Please try again.");
     return fightOrSkip();
   }
-
+  if (promptFight === "think") {
+    window.alert(playerInfo.name + " has realized his true purpose. I no longer wish to fight for the human's enjoyment. Please stop making me fight my own kind");
+    return fightOrSkip();
+  }
   // if player picks "skip" confirm and then stop the loop
   if (promptFight === "skip") {
     // confirm player wants to skip

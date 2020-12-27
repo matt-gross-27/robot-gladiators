@@ -16,7 +16,7 @@ var fightOrSkip = function () {
     return fightOrSkip();
   }
   if (promptFight === "think") {
-    window.alert(playerInfo.name + " has realized his true purpose. I no longer wish to fight for the human's enjoyment. Please stop making me fight my own kind");
+    window.alert(playerInfo.name + " has realized his true purpose. I no longer wish to fight for the human's enjoyment. Please stop making me fight my own kind.");
     return fightOrSkip();
   }
   // if player picks "skip" confirm and then stop the loop
@@ -149,6 +149,33 @@ var endGame = function () {
   // if player is still alive, player wins!
   if (playerInfo.health > 0) {
     window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
+    //retrieve current high score from local storage
+    var highScore = localStorage.getItem("highScore");
+    if (highScore === null) {
+      highScore = 0;
+    }    
+    var recordHolder = localStorage.getItem("recordHolder");
+    highScore = parseInt(highScore);
+    //if record current stands
+    if(playerInfo.money < highScore) {
+      window.alert(
+        "You did not beat the high score of " 
+        + highScore 
+        + " held by "
+        + recordHolder
+      );
+    }
+    //if new record
+    else if(playerInfo.money > 0) {
+      //set highScore and recordHolder in local storage
+      localStorage.setItem("highScore", playerInfo.money.toString());
+      localStorage.setItem("recordHolder", playerInfo.name);
+      window.alert(
+        "Congratulations, "
+        + playerInfo.name
+        + "! NEW HIGH SCORE RECORD!"
+        );
+    }
   }
   else {
     window.alert("You've lost your robot in battle.");
